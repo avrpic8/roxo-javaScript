@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پروژه ماشین حساب</title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <div class="container-fluid bg-dark p-5 m-0">
+        <div class="row text-center">
+            <div class="col">
+                <header>
+                    <h3 class="text-white">ماشین حساب ساده</h3>
+                </header>
+            </div>
+        </div>
+    </div>
+
+    <section id="calculator" class="mt-5 mx-3">
+        <div class="container rounded border">
+
+            <div class="row justify-content-center p-3">
+                <div class="col col-md-4 text-center">
+                    <input class="form-control " type="number" id="input-number">
+                </div>
+            </div>
+
+            <div class="row justify-content-center p-3">
+                <div class="col-md-2 text-center calc-action my-1">
+                    <button class="btn btn-primary btn-lg w-100" type="button" id="btn-add">+</button>
+                </div>
+                <div class="col-md-2 text-center calc-action my-1">
+                    <button class="btn btn-primary btn-lg w-100" type="button" id="btn-subtrac">-</button>
+                </div>
+                <div class="col-md-2 text-center calc-action my-1">
+                    <button class="btn btn-primary btn-lg w-100" type="button" id="btn-multy">*</button>
+                </div>
+                <div class="col-md-2 text-center calc-action my-1">
+                    <button class="btn btn-primary btn-lg w-100" type="button" id="btn-divid">/</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="result" class="mt-3 mx-3">
+        <div class="container rounded border">
+            <div class="row text-center">
+                <div class="col">
+                    <h2 class="" id="current-calc">0</h2>
+                    <h2 class="text-muted">نتیجه: <span id="current-result">0</span></h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/app.js"></script>
+
+</body>
+
+</html>
