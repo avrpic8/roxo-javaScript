@@ -202,3 +202,22 @@ for(let i=1; i<10; i++){
 }
 document.getElementById('answer').innerHTML = msg;
 
+// ========= Anonymous function
+const startBtnGame = document.getElementById('start-game');
+
+
+// funcation declaratin
+function startGame(){
+    console.log("بازی شروع شد");
+}
+
+// function expression , anonymous 
+const start = function(){
+    console.log("بازی شروع شد"); 
+} 
+
+startBtnGame.addEventListener("click", function(){
+    console.log("بازی شروع شد");
+});
+
+

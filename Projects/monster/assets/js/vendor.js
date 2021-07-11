@@ -19,20 +19,22 @@ function adjastHealthBars(maxLife) {
 }
 
 function dealMonsterDamage(damage) {
-    const dealDamage = Math.random() * damage;
+    const dealDamage = Math.ceil(Math.random() * damage);
     let currentHealth = parseInt(monsterHealth.style.width);
     monsterHealth.style.width = (currentHealth - dealDamage) + "%";
+    return dealDamage;
 }
 
 function dealPlayerDamage(damage) {
-    const dealDamage = Math.random() * damage;
+    const dealDamage = Math.ceil(Math.random() * damage);
     let currentHealth = parseInt(playerHealth.style.width);
-    playerHealth.style.width = (currentHealth + dealDamage) + "%";
+    playerHealth.style.width = (currentHealth - dealDamage) + "%";
     return dealDamage;
 }
 
 function increasePlayerHealth(healValue) {
-    playerHealth.value =+ playerHealth.value + healValue;
+    let currentHealth = parseInt(playerHealth.style.width);
+    playerHealth.style.width = (currentHealth + healValue) + "%";
 }
 
 function resetGame(value) {
@@ -41,7 +43,7 @@ function resetGame(value) {
 }
 
 function removeBonusLife() {
-    bonusLife.parentNode.replaceChild(bonusLife);
+    bonusLife.parentNode.removeChild(bonusLife);
 }
 
 function setPlayerHealth(health) {
