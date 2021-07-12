@@ -221,3 +221,6 @@ startBtnGame.addEventListener("click", function(){
 });
 
 
+
+
+
