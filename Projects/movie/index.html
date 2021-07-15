@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فیلم های مورد علاقه</title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/all.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/app.js" defer></script>
+
+</head>
+
+<body>
+    <div id="back-drop"></div>
+    <!-- site header -->
+    <header class="shadow-sm p-3">
+        <div class="container-fluid">
+            <div class="row justify-content-between">
+                <div class="col-12 col-md-6 text-right">
+                    <h1 class="text-white title">فیلم های مورد علاقه</h1>
+                </div>
+                <div class="col-12 col-md-2 d-flex flex-row-reverse">
+                    <button class="btn btn-secondary w-100" data-toggle="modal" data-target="#moview-modal">افزودن
+                        فیلم</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- card section -->
+    <section id="entry-text" class="m-2 m-md-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8 text-center">
+                    <div class="card shadow-sm p-2">
+                        <div class="card-body">
+                            <p class="card-title text-dark m-0">لیست فیلم های مورد علاقه شما !</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- movie section -->
+    <section class="m-2 m-md-5">
+        <div class="container">
+            <div id="movie-list" class="row text-center">
+            </div>
+        </div>
+    </section>
+
+    <!-- moview modal -->
+    <div id="moview-modal" class="modal fade add-modal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">فیلم جدید</h5>
+                    <button type="button" class="close ml-0" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-right">
+                    <label for="title">عنوان فیلم</label>
+                    <input type="text" name="title" id="title" class="form-control text-right">
+
+                    <label for="image-url" class="mt-2">آدرس تصویر</label>
+                    <input type="text" name="image-url" id="image-url" class="form-control text-right">
+
+                    <label for="rating" class="mt-2">امتیاز شما</label>
+                    <input type="number" name="rating" id="rating" min="1" max="5" step="1"
+                        class="form-control text-right">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary shadow cancel" data-dismiss="modal">لغو</button>
+                    <button type="button" class="btn btn-secondary shadow confirm" data-dismiss="modal">افزودن</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- remove modal -->
+    <div id="remove-modal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close ml-0" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title ">آیا مطمین هستید؟</h5>
+
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary w-25" data-dismiss="modal">خیر</button>
+                    <button type="button" class="btn btn-danger w-25">بله</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

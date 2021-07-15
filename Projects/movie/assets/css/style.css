@@ -1,0 +1,53 @@
+@font-face {
+    font-family: 'sahel';
+    src: url("../fonts/sahel.woff") format('woff');
+}
+
+body {
+    font-family: sahel, serif;
+    background: #efefef;
+    direction: rtl;
+} 
+
+header{
+    background: #1abc9c;
+}
+
+.title{
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.card-title{
+    font-size: 20px;
+}
+
+#back-drop{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 10;
+    pointer-events: none;
+    display: none;     
+}
+
+#back-drop.visible{
+    display: block;
+    pointer-events: all;
+}
+
+.movie-card{
+    cursor: pointer;
+}
+
+.star-icon{
+    color: yellow;
+}
+
+.img-card{
+    height: 200px;
+}
+
