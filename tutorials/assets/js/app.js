@@ -222,5 +222,21 @@ startBtnGame.addEventListener("click", function(){
 
 
 
+// ========= Binding
+const myData = {
+    title: 'پدرخواند',
+    getTitle: function(){
+        return console.log(this.title);
+    }
+}  
+
+myData.getTitle();  
+
+const newData = myData.getTitle.bind({title:'جوکر'});
+newData();
+
+const newData2 = myData.getTitle.bind({});
+newData2(); 
+
 
 
