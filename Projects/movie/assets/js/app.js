@@ -3,14 +3,19 @@ const movies = [];
 
 const backDrop = document.getElementById('back-drop');
 const addModal = document.getElementById('moview-modal');
+const removeModal = document.getElementById('remove-modal');
 const addMoviewButton = document.querySelector('header button');
 
 
-// add movie modal buttons
+// add movie modal elements
 const cancelMovieModalButon = addModal.querySelector('.cancel');
 //const confirmModalButon = addModal.querySelector('.confirm');
 const confirmMovieModalButton  = cancelMovieModalButon.nextElementSibling;
 const usersInputAddMovieModal = addModal.querySelectorAll('input');
+
+
+// remove movie modal elements
+const confirmRemoveButton  = removeModal.querySelector('.conform');
 
 // movie list
 const entryTextSection = document.getElementById('entry-text');
@@ -38,7 +43,7 @@ const updateUI = () =>{
     }
 }
 
-const deleteMovieHandler = (movieId) =>{
+const deleteMovie = (movieId) =>{
     let movieIndex = 0;
     for(const movie of movies){
         if(movie.id === movieId){
@@ -46,10 +51,13 @@ const deleteMovieHandler = (movieId) =>{
         }
         movieIndex++;     
     }
+
     movies.splice(movieIndex, 1);
     const listRoot = document.getElementById('movie-list');
     listRoot.children[movieIndex].remove();
     // listRoot.removeChild(listRoot.children[movieIndex]);
+
+    updateUI();
 }
 
 const renderNewMovieElement = (id, title, url, rating) =>{
@@ -59,12 +67,17 @@ const renderNewMovieElement = (id, title, url, rating) =>{
         <div class="card rounded movie-card" >
             <img src="${url}" class="img-card rounded-top" alt="...">
             <div class="card-body">
+                <i class="fa fa-trash fa-1x btn-delete" data-toggle="modal" data-target="#remove-modal"></i>
                 <p class="bg-primary badge-pill text-white float-right m-0">${rating}/5 <i class="fa fa-star star-icon"></i></p>
                 <h4 class="movie-title float-left m-0">${title}</h4>                      
             </div>
         </div>    
     `
-    newMovieElement.addEventListener('click', deleteMovieHandler.bind(null, id));
+    //newMovieElement.addEventListener('click', deleteMovie.bind(null, id));
+
+    confirmRemoveButton.addEventListener('click', function(){
+        console.log("hi");
+    });
     const listRoot = document.getElementById('movie-list');
     listRoot.append(newMovieElement);
 }

@@ -239,4 +239,163 @@ const newData2 = myData.getTitle.bind({});
 newData2(); 
 
 
+// ========= Arrays advanced    
+// const nubmers = new Array(5,2);
+// console.log(nubmers);
+
+// const items = Array.of(1,2,3);
+// console.log(items);
+
+// const arrayList = Array.from("Hi roxo")
+// console.log(arrayList);
+
+
+// const favorites = ['programming', 'Movies', 'Sports'];
+// const moreFavorites = [30, 'masuod', {objects:[1,2,3]}];
+// const moreData = [[1,2], [3,20]];
+
+
+// for(const data of moreData){
+//     for(const item of data)
+//         console.log(item);
+// }
+
+// const myItem = ['sports', 'study', 'tv watch'];
+// myItem.push('programming');
+// myItem.unshift('reading ');
+// myItem.shift()
+// myItem.pop();
+// console.log(myItem);
+
+
+// // slice method
+// const data = ['sport', 'movies', 'reading', 'tv', 'game', 'travel'];
+// const sliceData = data.slice(0, 2);
+// console.log(sliceData);
+
+// // splice methode
+// const spliceData = data.splice(1, 2);
+// const addSpliceData = data.splice(0,0, 'a', 'b')
+// console.log(data, addSpliceData);
+
+// // split method
+// const Mymessage = "سلام روز همگی بخیر";
+// const newMessage = Mymessage.split(' ', 2);
+// console.log(Mymessage, newMessage);
+
+
+// ========= loops
+const prices = [12000, 25000, 90000, 45000];
+const tax = 0.09;
+const taxCalculate = [];
+
+// for(const price of prices){
+//     taxCalculate.push(price * tax);
+// }
+
+prices.forEach((price, index, prices)=>{
+    const priceObj = {idx:index, taxPrice: price * tax}
+    taxCalculate.push(priceObj)
+})
+
+console.log(taxCalculate);
+
+
+// map method
+const taxCalc = prices.map((price, index, prices)=>{
+    const priceObj = {idx:index, taxPrice:price * tax};
+    return priceObj;
+})
+
+console.log(prices, taxCalc);
+
+// sort reverse methods
+const sortedPrice = prices.sort((a, b)=>{
+    if(a > b) return 1;
+    if(a === b) return 0;
+    if(a < b) return -1;
+});
+
+console.log(sortedPrice);
+
+
+// filter method
+const filteredPrices = prices.filter((price, index, prices)=>{
+    return price > 25000;
+});
+
+console.log(filteredPrices);
+
+// reduce method
+const cart = [125000, 78000, 90000];
+
+let sum = 0;
+cart.forEach(price =>sum += price);
+console.log(sum);
+
+// const sum2 = cart.reduce((preVal, curVal, curIndex, cart) =>{
+//     return preVal + curVal;
+// }, 0);
+
+const sum2 = cart.reduce((preVal, curVal) => preVal + curVal, 0);
+console.log(sum2);
+
+
+// ========= ... operator
+const fullName = ['saeed', 'ehsan'];
+const copiedFullName = [...fullName];
+console.log(copiedFullName);
+
+console.log(Math.min(...cart));
+
+const userData = ['saeed', 'razazzadeh', 'Male', 32];
+const [firstName, lastName, ...otherInfo] = userData;
+
+console.log(firstName, lastName, otherInfo);
+
+
+// ========= Sets
+const ids = new Set([1,2,3]);
+ids.add(6);
+ids.entries()
+console.log(ids);
+
+const user1 = {username:'saeed'};
+const user2 = {username: 'ehsan'};
+
+const userInfo = new Map([[user1, [{age:32, email:'avrpic8@gmail.com'}]]]);
+userInfo.set(user2, [{age:35, email:'avrpic8@yahoo.com'}]);
+
+for(const entry of userInfo.entries()){
+    console.log(entry);
+}
+
+for(const [key, value] of userInfo.entries()){
+    console.log(key, value);
+}
+
+for(const value of userInfo.values()){
+    console.log(value);
+}
+
+console.log(userInfo.size);
+
+
+// ========= Objects
+const person ={
+    name: 'saeed',
+    age: '32',
+    favorites: ['game', 'sport'],
+    welcome: function(){
+        alert("welcome");
+    }
+}
+
+person.isAdmin = true; // add properties
+delete person.age;     // delete properties
+console.log(person);
+
+
+// ========= OOP
+
 

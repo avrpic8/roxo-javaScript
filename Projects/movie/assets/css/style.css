@@ -43,6 +43,19 @@ header{
     cursor: pointer;
 }
 
+.card-body{
+    position: relative;
+}
+
+.card-body .btn-delete{
+    position: absolute;
+    top: -190px;
+    right: 10px;
+    color: beige;
+    display: block;
+    transition: .3s;
+}
+
 .star-icon{
     color: yellow;
 }
