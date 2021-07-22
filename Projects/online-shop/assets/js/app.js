@@ -14,8 +14,42 @@ class Product{
 
 }
 
-const productList = {
-    products: [ 
+class ProductItem{
+
+    constructor(product){
+        this.product = product;
+        
+    }
+
+    addToCard(){
+        App.addProductToCart(this.product); 
+    }
+
+    render(){
+
+        const prodElement = document.createElement('div');
+            prodElement.classList = 'col-12 col-md-6 col-lg-4 col-xl-3';
+            prodElement.innerHTML = `
+                <div class="card shadow-sm my-2">
+                    <img class="training-img" src="${this.product.imgUrl}" alt="">
+                    <div class="footer text-center mt-2 p-2">
+                        <h2 class="title">${this.product.title}</h2>
+                        <p class="badge badge-pill price bg-info">${this.product.price}</p>
+                        <h3 class="summary text-muted m-2">${this.product.description}</h3>
+                        <button class="btn btn-primary mb-2 btn-block">اضافه به سبد خرید</button>
+                    </div>
+                </div>    
+            `;
+
+        const addCardBtn = prodElement.querySelector('button');
+        addCardBtn.addEventListener('click', this.addToCard.bind(this));
+        return prodElement;
+    }
+}
+
+class ProductList{
+
+    products = [ 
         new Product(
             'دوره آموزش جاوااسکریپت', 
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwGPF8X5lgcLBtUZUXV9kPPpfw7IuIsTq3uQ&usqp=CAU',
@@ -30,28 +64,79 @@ const productList = {
             'یادگیری مقدماتی تا پیشرفته ری اکت پروژه محور'
         )
 
-    ],
+    ];
+
+    constructor(){}
+
     render() {
         const renderHook = document.getElementById('learn-container');
         console.log(renderHook);
 
         for (const prod of this.products) {
-            const prodElement = document.createElement('div');
-            prodElement.classList = 'col-12 col-md-6 col-lg-4 col-xl-3';
-            prodElement.innerHTML = `
-                <div class="card shadow-sm my-2">
-                    <img class="training-img" src="${prod.imgUrl}" alt="">
-                    <div class="footer text-center mt-2 p-2">
-                        <h2 class="title">${prod.title}</h2>
-                        <p class="badge badge-pill price bg-info">${prod.price}</p>
-                        <h3 class="summary text-muted m-2">${prod.description}</h3>
-                        <button class="btn btn-primary mb-2 btn-block">اضافه به سبد خرید</button>
-                    </div>
-                </div>    
-            `;
+            const productItem = new ProductItem(prod);
+            const prodElement = productItem.render();
             renderHook.append(prodElement);
         }
     }
+
 }
 
-productList.render();
+class ShoppingCart{
+
+    item = [];
+
+    addToProduct(product){
+        this.item.push(product);
+        this.totalOutput.innerHTML =`
+            <h2>تعداد محصول خریداری شده:${1}</h2>
+        `;
+    }
+
+    render(){
+        const cartElelement = document.createElement('section');
+        cartElelement.innerHTML = `
+            <div class="container">
+                <div class="row border border-primary rounded p-3">
+                    <div class="col-12 d-flex flex-column flex-md-row justify-content-between">
+                        <button class="btn btn-success m-2">ثبت سفارش</button>
+                        <h2 class="text-muted text-center m-2">مبلغ قابل پرداخت :</h2>
+                    </div>
+                </div>
+            </div>
+        `;
+        cartElelement.className = 'm-3';
+        return cartElelement;
+    }
+}
+
+class Shop{
+
+    render(){
+
+        const renderHook = document.getElementById('app');
+
+        this.cart = new ShoppingCart();
+        const cardEl = this.cart.render();
+
+        renderHook.append(cardEl);
+
+        const productList = new ProductList();
+        const prodEl = productList.render();        
+    }
+}
+
+
+// static methodas, static property
+class App{
+    static init(){
+        const shop = new Shop();
+        shop.render();
+        this.cart = Shop.cart;
+    }
+
+    static addProductToCart(product){
+        this.cart.addToProduct(product);
+    }
+}
+
+App.init();
