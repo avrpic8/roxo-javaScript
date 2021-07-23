@@ -85,16 +85,28 @@ class ShoppingCart{
 
     item = [];
 
-    addToProduct(product){
-        this.item.push(product);
+    set cartItem(value){
+        this.item = value;
         this.totalOutput.innerHTML =`
-            <h2>تعداد محصول خریداری شده:${1}</h2>
+           مبلغ نهایی خریداری شده:${this.totalAmount}
         `;
     }
 
+    get totalAmount(){
+        return this.item.reduce(
+            (preVal, curVal) => preVal + curVal.price
+            , 0);
+    }
+
+    addToProduct(product){
+        const updatedItems = [...this.item];
+        updatedItems.push(product);
+        this.cartItem = updatedItems;
+    }
+
     render(){
-        const cartElelement = document.createElement('section');
-        cartElelement.innerHTML = `
+        const cartElement = document.createElement('section');
+        cartElement.innerHTML = `
             <div class="container">
                 <div class="row border border-primary rounded p-3">
                     <div class="col-12 d-flex flex-column flex-md-row justify-content-between">
@@ -104,8 +116,9 @@ class ShoppingCart{
                 </div>
             </div>
         `;
-        cartElelement.className = 'm-3';
-        return cartElelement;
+        cartElement.className = 'm-3';
+        this.totalOutput = cartElement.querySelector('h2');
+        return cartElement;
     }
 }
 
@@ -121,17 +134,17 @@ class Shop{
         renderHook.append(cardEl);
 
         const productList = new ProductList();
-        const prodEl = productList.render();        
+        productList.render();
     }
 }
 
 
-// static methodas, static property
+// static methods, static property
 class App{
     static init(){
         const shop = new Shop();
         shop.render();
-        this.cart = Shop.cart;
+        this.cart = shop.cart;
     }
 
     static addProductToCart(product){

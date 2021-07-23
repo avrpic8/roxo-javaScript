@@ -14,7 +14,7 @@ header{
 }
 
 .title{
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 500;
 }
 
@@ -56,11 +56,12 @@ header{
     transition: .3s;
 }
 
+.img-card{
+    height: 200px;
+}
+
 .star-icon{
     color: yellow;
 }
 
-.img-card{
-    height: 200px;
-}
 
