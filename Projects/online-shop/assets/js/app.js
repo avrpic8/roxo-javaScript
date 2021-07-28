@@ -14,9 +14,34 @@ class Product{
 
 }
 
-class ProductItem{
+class Component{
 
-    constructor(product){
+    constructor(renderHookId){
+        this.hookId = renderHookId;
+    }
+
+    createRootElement(tag, cssClasses, attributes){
+        
+        const rootElement = document.createElement(tag);
+        if(cssClasses){
+            rootElement.className = cssClasses;
+        }
+
+        if(attributes && attributes.length > 0){
+            for(const attr of attributes){
+                rootElement.setAttribute(attr.name, attr.value);
+            }
+        }
+
+        document.getElementById(this.hookId).append(rootElement);
+        return rootElement;
+    }    
+}
+
+class ProductItem extends Component{
+
+    constructor(product, renderHookId){
+        super(renderHookId);
         this.product = product;
         
     }
@@ -27,23 +52,20 @@ class ProductItem{
 
     render(){
 
-        const prodElement = document.createElement('div');
-            prodElement.classList = 'col-12 col-md-6 col-lg-4 col-xl-3';
-            prodElement.innerHTML = `
-                <div class="card shadow-sm my-2">
-                    <img class="training-img" src="${this.product.imgUrl}" alt="">
-                    <div class="footer text-center mt-2 p-2">
-                        <h2 class="title">${this.product.title}</h2>
-                        <p class="badge badge-pill price bg-info">${this.product.price}</p>
-                        <h3 class="summary text-muted m-2">${this.product.description}</h3>
-                        <button class="btn btn-primary mb-2 btn-block">اضافه به سبد خرید</button>
-                    </div>
-                </div>    
-            `;
-
+        const prodElement = this.createRootElement('div', 'col-12 col-md-6 col-lg-4 col-xl-3');
+        prodElement.innerHTML = `
+            <div class="card shadow-sm my-2">
+                <img class="training-img" src="${this.product.imgUrl}" alt="">
+                <div class="footer text-center mt-2 p-2">
+                    <h2 class="title">${this.product.title}</h2>
+                    <p class="badge badge-pill price bg-info">${this.product.price}</p>
+                    <h3 class="summary text-muted m-2">${this.product.description}</h3>
+                    <button class="btn btn-primary mb-2 btn-block">اضافه به سبد خرید</button>
+                </div>
+            </div>    
+        `;
         const addCardBtn = prodElement.querySelector('button');
         addCardBtn.addEventListener('click', this.addToCard.bind(this));
-        return prodElement;
     }
 }
 
@@ -66,24 +88,27 @@ class ProductList{
 
     ];
 
-    constructor(){}
+    constructor(){
+
+    }
 
     render() {
-        const renderHook = document.getElementById('learn-container');
-        console.log(renderHook);
 
         for (const prod of this.products) {
-            const productItem = new ProductItem(prod);
-            const prodElement = productItem.render();
-            renderHook.append(prodElement);
+            const productItem = new ProductItem(prod, 'learn-container');
+            productItem.render();   
         }
     }
 
 }
 
-class ShoppingCart{
+class ShoppingCart extends Component{
 
     item = [];
+
+    constructor(renderHookId){
+        super(renderHookId);
+    }
 
     set cartItem(value){
         this.item = value;
@@ -105,7 +130,7 @@ class ShoppingCart{
     }
 
     render(){
-        const cartElement = document.createElement('section');
+        const cartElement = this.createRootElement('section', 'row border border-primary rounded p-3');
         cartElement.innerHTML = `
             <div class="container">
                 <div class="row border border-primary rounded p-3">
@@ -118,7 +143,7 @@ class ShoppingCart{
         `;
         cartElement.className = 'm-3';
         this.totalOutput = cartElement.querySelector('h2');
-        return cartElement;
+        //return cartElement;
     }
 }
 
@@ -126,12 +151,8 @@ class Shop{
 
     render(){
 
-        const renderHook = document.getElementById('app');
-
-        this.cart = new ShoppingCart();
-        const cardEl = this.cart.render();
-
-        renderHook.append(cardEl);
+        this.cart = new ShoppingCart('app');
+        this.cart.render();
 
         const productList = new ProductList();
         productList.render();
