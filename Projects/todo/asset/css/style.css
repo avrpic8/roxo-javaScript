@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    direction: rtl;
+}
+
+ul,li{
+    list-style: none;
+}
+
+.title-head{
+    font-size: 22px;
+}
+
+.todo-list{
+    height: 200px;
+    overflow-y: auto;
+}

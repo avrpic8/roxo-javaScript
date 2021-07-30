@@ -135,7 +135,7 @@ class ShoppingCart extends Component{
             <div class="container">
                 <div class="row border border-primary rounded p-3">
                     <div class="col-12 d-flex flex-column flex-md-row justify-content-between">
-                        <button class="btn btn-success m-2">ثبت سفارش</button>
+                        <button class="btn btn-primary m-2">ثبت سفارش</button>
                         <h2 class="text-muted text-center m-2">مبلغ قابل پرداخت :</h2>
                     </div>
                 </div>
