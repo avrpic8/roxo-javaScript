@@ -1,0 +1,8 @@
+.nav-link, .nav-link:hover{
+    color: slategray;
+}
+
+.nav-link i:hover{
+    color: tomato;
+    cursor: pointer;
+}
