@@ -10,12 +10,43 @@
 </head>
 <body>
 
-    <div id="first-app">
+    <!-- <div id="first-app">
         <button type="submit" id="btn">کلیک کنید</button>
-    </div>
+    </div> -->
+
+    <section id="new-post">
+        <h1>افزودن پست</h1>
+        <form >
+            <div class="form-control">
+                <label for="title">عنوان</label>
+                <input type="text" id="title">
+            </div>
+
+            <div class="form-control">
+                <label for="content">توضیحات</label>
+                <textarea id="content" rows="10"></textarea>
+            </div>
+
+            <button type="submit" style="margin: 10px;">افزودن</button>
+        </form>
+    </section>
+
+    <template id="single-post">
+        <li class="post-item">
+            <h2></h2>
+            <p></p>
+            <button>حذف</button>
+        </li>
+    </template>
+
+    <section id="available-posts">
+        <button>فراخوانی پست ها</button>
+        <ul class="posts"></ul>
+    </section>
 
     <script src="../assets/js/converter.js"></script>
     <script src="../assets/js/promise.js"></script>
+    <script src="../assets/js/http.js"></script>
     
 </body>
 </html>
