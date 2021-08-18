@@ -31,7 +31,6 @@ class Ui{
 
         // Clear input
         this.taskInput.value = '';
-
         e.preventDefault();
     }
 
